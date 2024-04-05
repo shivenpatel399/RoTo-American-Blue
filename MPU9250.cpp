@@ -1,9 +1,9 @@
 /*
 MPU9250.cpp
-Brian R Taylor
-brian.taylor@bolderflight.com
+Shiven Patel
+shivenpatel399@gmail.com
 
-Copyright (c) 2017 Bolder Flight Systems
+Copyright (c) 2024 Shiven Patel
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software 
 and associated documentation files (the "Software"), to deal in the Software without restriction, 
