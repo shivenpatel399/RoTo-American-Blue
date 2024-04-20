@@ -2,6 +2,8 @@
 
 ## Supported Versions
 
+The Following Versions are Supported for this Code.
+
 | Version | Supported          |
 | ------- | ------------------ |
 | 5.1.x   | :x: |
@@ -11,6 +13,6 @@
 
 ## Reporting a Vulnerability
 
-Report under Issues Tab.
+Report under the Issues Tab if any security threat is breached under the code. No copying or any changes in code allowed.
 
 
