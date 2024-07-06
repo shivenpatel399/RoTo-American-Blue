@@ -11,7 +11,7 @@ The Following Versions are Supported for this Code.
 | 4.0.x   | :x: |
 | < 4.0   | :white_check_mark:                |
 
-## Reporting a Vulnerability
+## Reporting Vulnerability
 
 Report under the Issues Tab if any security is breached under the code. No copying or any changes in code allowed.
 
