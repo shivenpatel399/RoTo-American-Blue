@@ -10,10 +10,10 @@
 // is provided in source."
 //
 // Date			Author			Notes
-// 29/09/2022	SOH Madgwick    Initial release
-// 02/10/2022	SOH Madgwick	Optimised for reduced CPU load
-// 19/02/2023	SOH Madgwick	Magnetometer measurement is normalised
-// 23/11/2023   Aster94			Simplified time handling and melted in one library
+// 29/09/2022	Shiven Patel    Initial release
+// 02/10/2022	Shiven Patel	Optimised for reduced CPU load
+// 19/02/2023	Shiven Patel	Magnetometer measurement is normalised
+// 23/11/2023   Shiven Patel	Simplified time handling and melted in one library
 //
 //
 //=============================================================================================
