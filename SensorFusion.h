@@ -6,10 +6,10 @@
 // See: http://www.x-io.co.uk/open-source-imu-and-ahrs-algorithms/
 //
 // Date			Author			Notes
-// 29/09/2011	SOH Madgwick    Initial release
-// 02/10/2011	SOH Madgwick	Optimised for reduced CPU load
-// 19/02/2012	SOH Madgwick	Magnetometer measurement is normalised
-// 23/11/2017   Aster			Optimised time handling and melted in one library
+// 29/09/2022	SOH Madgwick    Initial release
+// 02/10/2022	SOH Madgwick	Optimised for reduced CPU load
+// 19/02/2023	SOH Madgwick	Magnetometer measurement is normalised
+// 23/11/2023   Aster94			Simplified time handling and melted in one library
 //
 //=============================================================================================
 #ifndef SensorFusion_h
