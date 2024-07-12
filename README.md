@@ -1,14 +1,23 @@
-# SH2 Sensorhub driver for MCU application (No RTOS version)
+# v1.0.0.alpha
 
-The files in this repository provide application-level SH2 sensor hub functionality.
 
-To use this code, an application developer will need to:
-* Incorporate this code into a project.
-* Provide platform-level functions, as specified in sh2_hal.h
-* Develop application logic to call the functions in sh2.h
+# Wiring (v.1.0.0.gamma)
 
-More complete instruction can be found in the User's Guide:
-* [SH2 Library User's Guide](UserGuide.pdf)
+Keep 3.3V on High
+- VCC
+Keep GND on Low
+- GND
+- PS0
+- PS1
+Other Connections:
+- SCL -> SCL (D21)
+- SDA -> SDA (D20)
 
-An example project based on this driver can be found here:
-* [sh2-demo-nucleo](https://github.com/hcrest/sh2-demo-nucleo)
+# Code (v.1.0.0.gamma)
+
+Address: 0x4B (Make sure to edit Adafruit_BNO08x.h file for address 0x4A)
+
+Baud Rate: 115200
+
+Comment out SPI mode's CS, INT, and RST definitions
+
