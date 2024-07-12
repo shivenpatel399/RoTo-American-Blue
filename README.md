@@ -60,6 +60,8 @@ Comment out SPI mode's CS, INT, and RST definitions
 ## Achievements
 ----------------------
 
-2nd Robot Tour Solo @Mira Loma Invi 2024
-3rd Robot Tour Solo @BARSO 2024
-5th Robot Tour Solo @NorCal States 2024
+2nd Robot Tour Solo @Mira Loma Invi 2024 _https://www.duosmium.org/results/2024-01-13_mira_loma_invitational_c/_
+
+3rd Robot Tour Solo @BARSO 2024 _https://www.duosmium.org/results/2024-02-03_nCA_bay_area_regional_c/_
+
+5th Robot Tour Solo @NorCal States 2024 _https://www.duosmium.org/results/2024-04-06_nCA_states_c/_
