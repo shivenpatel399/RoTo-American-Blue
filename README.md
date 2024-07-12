@@ -44,15 +44,15 @@ Currently working on Gyro code
 
 Sensor: BNO08x
 
-* Wiring (v.1.0.0.gamma)
+Wiring (v.1.0.0.gamma)
 
-* Keep 3.3V on High
+Keep 3.3V on High:
 - VCC
-* Keep GND on Low
+Keep GND on Low:
 - GND
 - PS0
 - PS1
-* Other Connections:
+Other Connections:
 - SCL -> SCL (D21)
 - SDA -> SDA (D20)
 
