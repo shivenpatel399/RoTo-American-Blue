@@ -14,6 +14,8 @@ Only works with EV3 Hardware
 
 MicroPython is used under VS Code
 
+Same maze solving and PD/PID logic as Arduino
+
 ## v1.0.0.alpha
 ----------------------
 Test Code is provided to test different functions
