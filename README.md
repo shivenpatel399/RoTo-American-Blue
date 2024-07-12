@@ -1,6 +1,5 @@
-# v1.0.0
+# Nosie Nozu hehehehe
 ----------------------
-This is some robotic code used for Science Olympiad Robot Tour Event
 
 # v1.0.0.alpha
 ----------------------
