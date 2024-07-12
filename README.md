@@ -1,6 +1,3 @@
-# Nosie Nozu hehehehe
-----------------------
-
 # v1.0.0.alpha
 ----------------------
 Test Code is provided to test different functions
