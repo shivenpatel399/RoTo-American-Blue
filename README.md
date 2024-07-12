@@ -1,6 +1,6 @@
 # American High School Blue Robot Tour
 ----------------------
-All the resources used from the American High School Blue Robot Tour 2024 Season (Codes, Libraries, Logic, Files, Libraries, etc.)
+All the resources used from the American High School Blue Robot Tour Seasons (Codes, Libraries, Logic, Files, Libraries, etc.)
 
 ## v1.0.0.alpha
 ----------------------
