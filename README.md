@@ -6,6 +6,8 @@ All the resources used for American High School Blue Robot Tour (Codes, Librarie
 ----------------------
 Test Code is provided to test different functions
 
+Sensor: GY-91
+
 Basic Movement does not use gyro (unlike Test Code) and moves the motors
 
 **Code can work under Arduino UNO R4 Minima or Arduino GIGA R1 WIFI**
@@ -14,13 +16,18 @@ Basic Movement does not use gyro (unlike Test Code) and moves the motors
 ----------------------
 
 Includes all the Library Files and documents. It can be edited, but you don't need to worry. Includes Madgwick and Mahony Algorithms
+
 Robotic Code is uploaded under this version that was used in NorCal States 2024
+
+Sensor: GY-91
 
 **Code can run ONLY under Arduino GIGA R1 WIFI**
 
 ## v1.0.0.ev3
 ----------------------
 Bot Code used for EV3 Bot (Used in Mira Loma Invitational and BARSO)
+
+Sensor: EV3 Gyro
 
 MicroPython is used under VS Code (So make sure to install EV3 Python Extension in VS Code)
 
@@ -32,19 +39,22 @@ Same maze-solving and PD/PID logic as Arduino
 ----------------------
 
 Logic Code to be made
+
 Currently working on Gyro code
+
+Sensor: BNO08x
 
 * Wiring (v.1.0.0.gamma)
 
-Keep 3.3V on High
-- VCC
-Keep GND on Low
-- GND
-- PS0
-- PS1
-Other Connections:
-- SCL -> SCL (D21)
-- SDA -> SDA (D20)
+- Keep 3.3V on High
+-- VCC
+- Keep GND on Low
+-- GND
+-- PS0
+-- PS1
+- Other Connections:
+-- SCL -> SCL (D21)
+-- SDA -> SDA (D20)
 
 * Code (v.1.0.0.gamma)
 
