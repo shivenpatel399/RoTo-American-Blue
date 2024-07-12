@@ -1,3 +1,7 @@
+# v1.0.0
+----------------------
+This is some robotic code used for Science Olympiad Robot Tour Event
+
 # v1.0.0.alpha
 ----------------------
 Test Code is provided to test different functions
