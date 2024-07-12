@@ -1,6 +1,6 @@
 # AHS ROBOT TOUR
 ----------------------
-All the resources used for AHS Robot Tour
+All the resources used for American High School Blue Robot Tour (Codes, Libraries, Logic, Files, Libraries, etc.)
 
 ## v1.0.0.alpha
 ----------------------
@@ -8,7 +8,7 @@ Test Code is provided to test different functions
 
 Basic Movement does not use gyro (unlike Test Code) and moves the motors
 
-**Code can work under Arduino R4 Minima or Arduino GIGA R1**
+**Code can work under Arduino UNO R4 Minima or Arduino GIGA R1 WIFI**
 
 ## v1.0.0.beta
 ----------------------
@@ -16,7 +16,7 @@ Basic Movement does not use gyro (unlike Test Code) and moves the motors
 Includes all the Library Files and documents. It can be edited, but you don't need to worry. Includes Madgwick and Mahony Algorithms
 Robotic Code is uploaded under this version that was used in NorCal States 2024
 
-**Code can run ONLY under Arduino GIGA R1**
+**Code can run ONLY under Arduino GIGA R1 WIFI**
 
 ## v1.0.0.ev3
 ----------------------
@@ -26,7 +26,7 @@ MicroPython is used under VS Code (So make sure to install EV3 Python Extension 
 
 Same maze-solving and PD/PID logic as Arduino
 
-**Only works with EV3 Hardware**
+**Only works with EV3 Mindstorms Hardware**
 
 ## v1.0.0.gamma
 ----------------------
