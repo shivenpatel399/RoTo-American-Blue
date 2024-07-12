@@ -6,9 +6,9 @@ All the resources used for AHS Robot Tour
 ----------------------
 Bot Code used for EV3 Bot (Used in Mira Loma Invitational and BARSO)
 
-MicroPython is used under VS Code
+MicroPython is used under VS Code (So make sure to install EV3 Python Extension in VS Code)
 
-Same maze solving and PD/PID logic as Arduino
+Same maze-solving and PD/PID logic as Arduino
 
 **Only works with EV3 Hardware**
 
