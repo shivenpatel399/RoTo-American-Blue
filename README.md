@@ -7,7 +7,7 @@ Basic Movement does not use gyro (unlike Test Code) and moves the motors
 # v1.0.0.beta
 ----------------------
 
-Includes all the Library Files and documents. It can be edited, but no need. Includes Madgwick and Mahony Algorithms
+Includes all the Library Files and documents. It can be edited, but you don't need to worry. Includes Madgwick and Mahony Algorithms
 Robotic Code is uploaded under this version that was used in NorCal States 2024 (5th Place Solo ggwp)
 
 # v1.0.0.gamma
@@ -32,11 +32,10 @@ Other Connections:
 
 Address: 0x4B (Make sure to edit Adafruit_BNO08x.h file for address 0x4A)
 
-# DO NOT FABRICATE THE CODE
-
-I will do things to you if you touch my property... 
-
 Baud Rate: 115200
 
 Comment out SPI mode's CS, INT, and RST definitions
 
+# DO NOT FABRICATE THE CODE
+
+I will do things to you if you touch my property... 
