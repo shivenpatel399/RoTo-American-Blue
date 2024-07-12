@@ -1,9 +1,13 @@
 ## v1.0.0.ev3
 ----------------------
 Bot Code used for EV3 Bot (Used in Mira Loma Invitational and BARSO)
+
 2nd at Mira (ggs)
+
 3rd at BARSO (ggwp)
+
 Only works with EV3 Hardware
+
 MicroPython is used under VS Code
 
 ## v1.0.0.alpha
