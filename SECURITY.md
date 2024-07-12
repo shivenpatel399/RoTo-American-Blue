@@ -6,10 +6,10 @@ The Following Versions are Supported for this Code.
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 5.1.x   | :x: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :x: |
-| < 4.0   | :white_check_mark:                |
+| 1.0.3   | :x: |
+| 1.0.2   | :x:                |
+| 1.0.1   | :x: |
+| < 1.0   | :white_check_mark:                |
 
 ## Reporting Vulnerability
 
