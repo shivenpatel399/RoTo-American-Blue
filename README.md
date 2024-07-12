@@ -32,6 +32,10 @@ Other Connections:
 
 Address: 0x4B (Make sure to edit Adafruit_BNO08x.h file for address 0x4A)
 
+# DO NOT FABRICATE THE CODE
+
+I will do things to you if you touch my property... 
+
 Baud Rate: 115200
 
 Comment out SPI mode's CS, INT, and RST definitions
