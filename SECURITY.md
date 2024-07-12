@@ -13,6 +13,6 @@ The Following Versions are Supported for this Code.
 
 ## Reporting Vulnerability
 
-Report under the Issues Tab if any security breaches. No copying or any code changes are allowed.
+Report under the Issues Tab for any security breaches. No copying or any code changes are allowed.
 
 
