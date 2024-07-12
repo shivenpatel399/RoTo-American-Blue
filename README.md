@@ -72,8 +72,7 @@ Baud Rate: 115200
 
 Comment out SPI mode's CS, INT, and RST definitions
 
-**Code can run ONLY under Arduino Due
-**
+**Code can run ONLY under Arduino Due**
 
 ## Achievements
 ----------------------
