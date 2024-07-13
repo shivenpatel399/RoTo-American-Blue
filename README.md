@@ -1,6 +1,7 @@
 # American High School Blue Robot Tour
 ----------------------
 All the resources used from the American High School Blue Robot Tour Seasons (Codes, Libraries, Logic, Files, Libraries, etc.)
+**Written by Shiven Patel**
 
 ## Designs
 ----------------------
