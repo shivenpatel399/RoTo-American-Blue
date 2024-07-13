@@ -74,6 +74,11 @@ Comment out SPI mode's CS, INT, and RST definitions
 
 **Code can run ONLY under Arduino Due**
 
+## Designs
+----------------------
+
+I have attached 3 designs of the robots. 2 of them are from between regionals and states. The last one is my current 2025 Prototypes.
+
 ## Achievements
 ----------------------
 
