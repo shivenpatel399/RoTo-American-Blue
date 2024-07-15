@@ -71,7 +71,7 @@ Comment out SPI mode's CS, INT, and RST definitions
 
 **Code can run ONLY under Arduino Due**
 
-## v1.0.0.testcodes
+## v1.0.0.testcodes (Only Arduino)
 ----------------------
 Test Code is provided to test different functions
 
