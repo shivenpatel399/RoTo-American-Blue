@@ -32,7 +32,7 @@ Same maze-solving and PD/PID logic as Arduino
 
 **Only works with EV3 Mindstorms Hardware**
 
-## v1.0.0.gamma (2025 Season - Work In Progress)
+## v1.0.0.gamma (Work In Progress)
 ----------------------
 
 Logic Code to be made
