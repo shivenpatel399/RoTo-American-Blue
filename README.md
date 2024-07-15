@@ -84,6 +84,8 @@ Comment out SPI mode's CS, INT, and RST definitions
 ## Achievements
 ----------------------
 
+**Here are some of my achievements:**
+
 - 2nd at Mira Loma Invitational
 - 3rd at Bay Area Regional Science Olympiad
 - 5th at NorCal States Science Olympiad
