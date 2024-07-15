@@ -9,7 +9,7 @@ All the resources used from the American High School Blue Robot Tour Seasons (Co
 
 I have attached 3 designs of the robots. 2 of them are from between regionals and states. The last one is my current 2025 Prototypes.
 
-## v1.0.0.alpha
+## v1.0.0.testcodes
 ----------------------
 Test Code is provided to test different functions
 
