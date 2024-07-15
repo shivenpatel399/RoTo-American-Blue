@@ -9,17 +9,7 @@ All the resources used from the American High School Blue Robot Tour Seasons (Co
 
 I have attached 3 designs of the robots. 2 of them are from between regionals and states. The last one is my current 2025 Prototypes.
 
-## v1.0.0.testcodes
-----------------------
-Test Code is provided to test different functions
-
-Sensor: GY-91
-
-Basic Movement does not use gyro (unlike Test Code) and moves the motors
-
-**Code can work under Arduino UNO R4 Minima or Arduino GIGA R1 WIFI**
-
-## v1.0.0.beta
+## v1.0.0.beta (2024 Season - NorCal States)
 ----------------------
 
 Includes all the Library Files and documents. It can be edited, but you don't need to worry. Includes Madgwick and Mahony Algorithms
@@ -30,7 +20,7 @@ Sensor: GY-91
 
 **Code can run ONLY under Arduino GIGA R1 WIFI**
 
-## v1.0.0.ev3
+## v1.0.0.ev3 (2024 Season - Mira Loma/BARSO)
 ----------------------
 Bot Code used for EV3 Bot (Used in Mira Loma Invitational and BARSO)
 
@@ -42,7 +32,7 @@ Same maze-solving and PD/PID logic as Arduino
 
 **Only works with EV3 Mindstorms Hardware**
 
-## v1.0.0.gamma
+## v1.0.0.gamma (2025 Season - Work In Progress)
 ----------------------
 
 Logic Code to be made
@@ -80,6 +70,16 @@ Baud Rate: 115200
 Comment out SPI mode's CS, INT, and RST definitions
 
 **Code can run ONLY under Arduino Due**
+
+## v1.0.0.testcodes
+----------------------
+Test Code is provided to test different functions
+
+Sensor: GY-91
+
+Basic Movement does not use gyro (unlike Test Code) and moves the motors
+
+**Code can work under Arduino UNO R4 Minima or Arduino GIGA R1 WIFI**
 
 ## Achievements
 ----------------------
