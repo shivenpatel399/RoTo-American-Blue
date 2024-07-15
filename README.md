@@ -80,3 +80,10 @@ Baud Rate: 115200
 Comment out SPI mode's CS, INT, and RST definitions
 
 **Code can run ONLY under Arduino Due**
+
+## Achievements
+----------------------
+
+- 2nd at Mira Loma Invitational
+- 3rd at Bay Area Regional Science Olympiad
+- 5th at NorCal States Science Olympiad
