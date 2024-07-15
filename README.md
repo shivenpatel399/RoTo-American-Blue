@@ -81,11 +81,3 @@ Basic Movement does not use gyro (unlike Test Code) and moves the motors
 
 **Code can work under Arduino UNO R4 Minima or Arduino GIGA R1 WIFI**
 
-## Achievements
-----------------------
-
-**Here are some of my achievements:**
-
-- 2nd at Mira Loma Invitational
-- 3rd at Bay Area Regional Science Olympiad
-- 5th at NorCal States Science Olympiad
