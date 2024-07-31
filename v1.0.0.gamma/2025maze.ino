@@ -19,6 +19,14 @@
 #define enB 8
 #define in3 10
 #define in4 9
+// ~ Motor C connections
+#define enC 14
+#define in5 15
+#define in6 16
+// ~ Motor B connections
+#define enD 17
+#define in7 18
+#define in8 19
 // ~ Declaration for an SSD1306 display connected to I2C (SDA, SCL pins)
 #define OLED_RESET -1
 // ~ Motor Interrupt Declaration Components
@@ -53,7 +61,7 @@ float Gain = 0;
 float gain = 0;
 float target = 0;
 float correction = 0;
-float powerLeft = 0;
+float powert = 0;
 float powerRight = 0;
 int cycle = 0;
 int final_change = 0;
@@ -144,10 +152,10 @@ void PID(int steps, int power, float Kp, float Ki, float Kd) { // Input the amou
     }
     derivative = e - lastError; // This determines the change in error over time to increase rate of change.
     correction = ((Kp * e) + (Ki * integral) + (Kd * derivative)) * -1; // Combine the determination of error, comparison and combination of error, and change in error multiply by -1 to make each motor work inversely
-    powerLeft = power - correction; // Even if motor Left is taking positives, it will always work inversel regardless positive or negative to powerRight.
-    powerRight = power + correction; // Refer back to powerLeft
+    powert = power - correction; // Even if motor t is taking positives, it will always work inversel regardless positive or negative to powerRight.
+    powerRight = power + correction; // Refer back to powert
 
-    analogWrite(enA, powerLeft); // Take the changed power readings and apply them to change motor PWM for each. Numbers can be 49 and 51 (example)
+    analogWrite(enA, powert); // Take the changed power readings and apply them to change motor PWM for each. Numbers can be 49 and 51 (example)
     analogWrite(enB, powerRight);
       
     digitalWrite(in1, LOW); // Initilize and move the motors
@@ -191,10 +199,10 @@ void PIDBACK(int steps, int power, float Kp, float Ki, float Kd) { // Input the 
     }
     derivative = e - lastError; // This determines the change in error over time to increase rate of change.
     correction = ((Kp * e) + (Ki * integral) + (Kd * derivative)) * -1; // Combine the determination of error, comparison and combination of error, and change in error multiply by -1 to make each motor work inversely
-    powerLeft = power + correction; // Even if motor Left is taking positives, it will always work inversel regardless positive or negative to powerRight.
-    powerRight = power - correction; // Refer back to powerLeft
+    powert = power + correction; // Even if motor t is taking positives, it will always work inversel regardless positive or negative to powerRight.
+    powerRight = power - correction; // Refer back to powert
 
-    analogWrite(enA, powerLeft); // Take the changed power readings and apply them to change motor PWM for each. Numbers can be 49 and 51 (example)
+    analogWrite(enA, powert); // Take the changed power readings and apply them to change motor PWM for each. Numbers can be 49 and 51 (example)
     analogWrite(enB, powerRight);
       
     digitalWrite(in1, HIGH); // Initilize and move the motors
@@ -227,9 +235,9 @@ void PD(int thesteps, int power, float gained) { // Critical Change Point
   while ((thesteps * 2) > counter_A + counter_B) {
     mpu.update();
     thecorrection = target - float(mpu.getAngleZ());
-    powerLeft = power + (gained * thecorrection);
+    powert = power + (gained * thecorrection);
     powerRight = power - (gained * thecorrection);
-    analogWrite(enA, powerLeft);
+    analogWrite(enA, powert);
     analogWrite(enB, powerRight);
     digitalWrite(in1, LOW);
     digitalWrite(in2, HIGH);
@@ -249,9 +257,9 @@ void PDBACK(int thesteps, int power, float gainer) { // Critical Change Point
   while ((thesteps * 2) > counter_A + counter_B) {
     mpu.update();
     thecorrection = target - float(mpu.getAngleZ());
-    powerLeft = power - (gainer * thecorrection);
+    powert = power - (gainer * thecorrection);
     powerRight = power + (gainer * thecorrection);
-    analogWrite(enA, powerLeft);
+    analogWrite(enA, powert);
     analogWrite(enB, powerRight);
     digitalWrite(in1, HIGH);
     digitalWrite(in2, LOW);
@@ -315,28 +323,21 @@ void right(){// Critical Change Point
   PD(counts-72, powerneeded, gain);
 }
 void subRight(int speed) { // 32 is official speed with 85 degrees
-  mpu.update();
-  float angle = mpu.getAngleZ();
-  mock_mod_angle(angle);
-  analogWrite(enA, speed);
-  analogWrite(enB, speed);
-  mpu.update();
-  angle = mpu.getAngleZ();
-  expected_angle = mod_gyro_angle + 88.5; // Critical Change Point
-  while (float(mpu.getAngleZ()) < expected_angle) {
-    digitalWrite(in1, LOW);
-    digitalWrite(in2, HIGH);
-    digitalWrite(in3, LOW);
-    digitalWrite(in4, HIGH);
-    mpu.update();
-  }
+	analogWrite(enA, speed);
+	analogWrite(enB, speed);
+	analogWrite(enC, speed);
+	analogWrite(enD, speed);
+	digitalWrite(in1, LOW);
+	digitalWrite(in2, HIGH);
+	digitalWrite(in3, LOW);
+	digitalWrite(in4, HIGH);
   stop();
   delay(50);
   
 }
-void left() {// Critical Change Point
+void t() {// Critical Change Point
   PD(72, 60, 4.315);
-  subLeft(32);
+  subt(32);
   PD(counts-72, powerneeded, gain);
 }
 void subLeft(int speed) {
