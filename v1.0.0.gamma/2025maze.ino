@@ -341,21 +341,18 @@ void t() {// Critical Change Point
   PD(counts-72, powerneeded, gain);
 }
 void subLeft(int speed) {
-  mpu.update();
-  float angle = mpu.getAngleZ();
-  mock_mod_angle(angle);
   analogWrite(enA, speed);
-  analogWrite(enB, speed);
-  mpu.update();
-  angle = mpu.getAngleZ();
-  expected_angle = mod_gyro_angle - 88.5; // Critical Change Point
-  while (float(mpu.getAngleZ()) > expected_angle) {
-    digitalWrite(in1, HIGH);
-    digitalWrite(in2, LOW);
-    digitalWrite(in3, HIGH);
-    digitalWrite(in4, LOW);
-    mpu.update();
-  }
+	analogWrite(enB, speed);
+	analogWrite(enC, speed);
+	analogWrite(enD, speed);
+	digitalWrite(in1, HIGH);
+	digitalWrite(in2, LOW);
+	digitalWrite(in3, LOW);
+	digitalWrite(in4, HIGH);
+	digitalWrite(in5, HIGH);
+	digitalWrite(in6, LOW);
+	digitalWrite(in7, LOW);
+	digitalWrite(in8, HIGH);
   stop();
   delay(50);
 }
@@ -612,3 +609,19 @@ void loop() {
    Basic code to run repeatedly
   */
 }
+"""
+2025 New Logic
+Given that we have Omni, we have to consider a lot of things
+- Dowel will always face north
+- Movements will either be in pairs (north/south) or (east/west)
+- When doing turns, we have to switch operations where east/west will start operating
+Because of this, I have wrote some dummy code for the subLeft and subRight turns to signify how we will turn off one of the pairs to start the other.
+I am still currently in the process of adding this to maze solving, but I will first test the robot movements before going forward with maze solving
+For the last move, its going to be special since the dowel always faces north, we have a special routine for this.
+Just like how we did with North, South, East, and West functions, we will make conditionals for the last step. Here is a step by step.
+Step 1: Using the last 2 numbers in the list, identify the direction we have to go to
+Step 2: Create 4 special functions to signify each of the cases the robot has to comply to in order to reach the center
+Step 3: Create 4 conditionals dedicated to the special functions
+Final Step: If executed correctly, we should have a robot facing the point (Note that normal turns must work in 4 wheels moving the same direction)
+
+"""
