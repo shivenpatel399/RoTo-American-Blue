@@ -18,6 +18,8 @@ Robotic Code is uploaded under this version that was used in NorCal States 2024
 
 Sensor: GY-91
 
+Test Codes Included
+
 **Code can run ONLY under Arduino GIGA R1 WIFI**
 
 ## v1.0.0.ev3 (2024 Season - Mira Loma/BARSO)
@@ -47,19 +49,21 @@ Keep 3.3V on High:
 
 - VCC
 
+- PS0 (High)
+
+- PS1 (High)
+
 Keep GND on Low:
 
 - GND
 
-- PS0
-
-- PS1
-
 Other Connections:
 
-- SCL -> SCL (D21)
+- SCL -> SCK
 
-- SDA -> SDA (D20)
+- SDA -> MISO 
+
+- DI -> MOSI
 
 * Code (v.1.0.0.gamma)
 
@@ -69,15 +73,8 @@ Baud Rate: 115200
 
 Comment out SPI mode's CS, INT, and RST definitions
 
+Test Codes Included
+
 **Code can run ONLY under Arduino Due**
 
-## v1.0.0.testcodes (Only Arduino)
-----------------------
-Test Code is provided to test different functions
-
-Sensor: GY-91
-
-Basic Movement does not use gyro (unlike Test Code) and moves the motors
-
-**Code can work under Arduino UNO R4 Minima or Arduino GIGA R1 WIFI**
 
