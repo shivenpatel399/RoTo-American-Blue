@@ -3,18 +3,26 @@
 // quartenion and euler (yaw, pitch roll) angles.  Toggle the FAST_MODE define to see other report.  
 // Note sensorValue.status gives calibration accuracy (which improves over time)
 #include <Adafruit_BNO08x.h>
+#include <Wire.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+
+#define SCREEN_WIDTH 128
+#define SCREEN_HEIGHT 64
+#define OLED_RESET -1
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
 // For SPI mode, we need a CS pin
-// #define BNO08X_CS 10
-// #define BNO08X_INT 9
+#define BNO08X_CS 36
+#define BNO08X_INT 32
 
 
 // #define FAST_MODE
 
 // For SPI mode, we also need a RESET 
-//#define BNO08X_RESET 5
+#define BNO08X_RESET 34
 // but not for I2C or UART
-#define BNO08X_RESET -1
+// #define BNO08X_RESET -1
 
 struct euler_t {
   float yaw;
@@ -44,23 +52,31 @@ void setReports(sh2_SensorId_t reportType, long report_interval) {
 void setup(void) {
 
   Serial.begin(115200);
-  while (!Serial) delay(10);     // will pause Zero, Leonardo, etc until serial console opens
-
-  Serial.println("Adafruit BNO08x test!");
+  Wire.begin();
+  Wire.setClock(400000);
+  if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
+    Serial.println(F("SSD1306 allocation failed"));
+    for (;;);
+  }
+  display.clearDisplay();
+  display.setTextSize(1);
+  display.setTextColor(SSD1306_WHITE);
+  display.setCursor(0, 0);
+  display.println(F("Welcome Shiven!"));
+  display.println(F("Code will run shortly..."));
+  display.display();
+  delay(5000);
 
   // Try to initialize!
-  if (!bno08x.begin_I2C()) {
-  //if (!bno08x.begin_UART(&Serial1)) {  // Requires a device with > 300 byte UART buffer!
-  //if (!bno08x.begin_SPI(BNO08X_CS, BNO08X_INT)) {
-    Serial.println("Failed to find BNO08x chip");
+  // if (!bno08x.begin_I2C()) {
+  // if (!bno08x.begin_UART(&Serial1)) {  // Requires a device with > 300 byte UART buffer!
+  if (!bno08x.begin_SPI(BNO08X_CS, BNO08X_INT)) {
     while (1) { delay(10); }
   }
-  Serial.println("BNO08x Found!");
 
 
   setReports(reportType, reportIntervalUs);
 
-  Serial.println("Reading events");
   delay(100);
 }
 
@@ -93,7 +109,6 @@ void quaternionToEulerGI(sh2_GyroIntegratedRV_t* rotational_vector, euler_t* ypr
 void loop() {
 
   if (bno08x.wasReset()) {
-    Serial.print("sensor was reset ");
     setReports(reportType, reportIntervalUs);
   }
   
@@ -109,12 +124,18 @@ void loop() {
     }
     static long last = 0;
     long now = micros();
-    Serial.print(now - last);             Serial.print("\t");
-    last = now;
-    Serial.print(sensorValue.status);     Serial.print("\t");  // This is accuracy in the range of 0 to 3
-    Serial.print(ypr.yaw);                Serial.print("\t");
-    Serial.print(ypr.pitch);              Serial.print("\t");
-    Serial.println(ypr.roll);
+    last = now;  // This is accuracy in the range of 0 to 3
+    display.clearDisplay();
+    display.setTextSize(1);
+    display.setTextColor(SSD1306_WHITE);
+    display.setCursor(0, 0);
+    display.print(F(" Yaw: "));
+    display.println(ypr.yaw);
+    display.print(F(" Pitch: "));
+    display.println(ypr.pitch);
+    display.print(F(" Roll: "));
+    display.println(ypr.roll);
+    display.display();
   }
 
 }
