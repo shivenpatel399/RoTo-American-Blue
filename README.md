@@ -76,6 +76,6 @@ Comment out SPI mode's CS, INT, and RST definitions
 
 Test Codes Included
 
-**Code can run ONLY under Arduino Due**
+**Code can run ONLY under Arduino Due or GIGA R1**
 
 
