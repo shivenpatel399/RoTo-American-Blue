@@ -134,12 +134,12 @@ void setup() {
   display.println(F("Welcome Shiven!"));
   display.println(F("Code will run shortly..."));
   display.display();
-  delay(5000);
-  // PDeast(CMtoSteps(50), 155, 3.2275);
-  northx(CMtoSteps(40),130);
-  eastx(CMtoSteps(40),130);
-  southx(CMtoSteps(40),130);
-  westx(CMtoSteps(40),130);
+  delay(2500);
+  northplus(CMtoSteps(50),110);
+  eastplus(CMtoSteps(50),110);
+  southplus(CMtoSteps(50),110);
+  westplus(CMtoSteps(50),110);
+  
 } 
 
 
