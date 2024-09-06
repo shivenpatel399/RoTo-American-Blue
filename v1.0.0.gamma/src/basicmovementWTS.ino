@@ -258,13 +258,29 @@ void PDeast(int thesteps, int power, float gained) {
   display.println(abs(thistime-lasttime));
   display.display();
 }
-/*
 void PDwest(int thesteps, int power, float gained) {
   counter_A = 0;
   counter_C = 0;
-  target = ypr.yaw();
+  targetAngle();
+  lasttime = micros();
   while ((thesteps * 2) > counter_A + counter_C) {
-    thecorrection = target - float(ypr.yaw);
+    if (bno08x.wasReset()) {
+      setReports(reportType, reportIntervalUs);
+    }
+  
+    if (bno08x.getSensorEvent(&sensorValue)) {
+      // in this demo only one report type will be received depending on FAST_MODE define (above)
+      switch (sensorValue.sensorId) {
+        case SH2_ARVR_STABILIZED_RV:
+          quaternionToEulerRV(&sensorValue.un.arvrStabilizedRV, &ypr, true);
+        case SH2_GYRO_INTEGRATED_RV:
+          // faster (more noise?)
+          quaternionToEulerGI(&sensorValue.un.gyroIntegratedRV, &ypr, true);
+          break;
+      }
+    }
+    currentAngle = float(ypr.yaw);
+    thecorrection = target - currentAngle;
     powerA = power + (gained * thecorrection);
     powerC = power - (gained * thecorrection);
     M1_back(powerA);
@@ -273,64 +289,40 @@ void PDwest(int thesteps, int power, float gained) {
     display.setTextSize(1);
     display.setTextColor(SSD1306_WHITE);
     display.setCursor(0, 0);
-    display.print(" Counter A: ");
-    display.println(counter_A);
-    display.print(" Counter C: ");
-    display.println(counter_C);
+    display.print(" Expect: ");
+    display.println(target);
+    display.print(" Currnt: ");
+    display.println(currentAngle);
+    display.print(" PowerA: ");
+    display.println(powerA);
+    display.print(" PowerC: ");
+    display.println(powerC);
+    display.print(" Ang Diff: ");
+    display.println(abs(target-currentAngle));
     display.display();
 	  delay(10);
     } 
+  thistime = micros();
   stopWait();
+  display.clearDisplay();
+  display.setTextSize(1);
+  display.setTextColor(SSD1306_WHITE);
+  display.setCursor(0, 0);
+  display.print(" Expect: ");
+  display.println(target);
+  display.print(" Currnt: ");
+  display.println(currentAngle);
+  display.print(" PowerA: ");
+  display.println(powerA);
+  display.print(" PowerC: ");
+  display.println(powerC);
+  display.print(" Ang Diff: ");
+  display.println(abs(target-currentAngle));
+  display.print(" Time: ");
+  display.println(abs(thistime-lasttime));
+  display.display();
 }
 
-void PDnorth(int thesteps, int power, float gained) {
-  counter_B = 0;
-  counter_D = 0;
-  target = ypr.yaw();
-  while ((thesteps * 2) > counter_B + counter_D) {
-    thecorrection = target - float(ypr.yaw);
-    powerB = power + (gained * thecorrection);
-    powerD = power - (gained * thecorrection);
-    M2_back(powerB);
-    M4_advance(powerD);
-    display.clearDisplay();
-    display.setTextSize(1);
-    display.setTextColor(SSD1306_WHITE);
-    display.setCursor(0, 0);
-    display.print(" Counter B: ");
-    display.println(counter_B);
-    display.print(" Counter D: ");
-    display.println(counter_D);
-    display.display();
-	  delay(10);
-    } 
-  stopWait();
-}
-
-void PDsouth(int thesteps, int power, float gained) {
-  counter_B = 0;
-  counter_D = 0;
-  target = ypr.yaw();
-  while ((thesteps * 2) > counter_B + counter_D) {
-    thecorrection = target - float(ypr.yaw());
-    powerB = power + (gained * thecorrection);
-    powerD = power - (gained * thecorrection);
-    M2_advance(powerB);
-    M4_back(powerD);
-    display.clearDisplay();
-    display.setTextSize(1);
-    display.setTextColor(SSD1306_WHITE);
-    display.setCursor(0, 0);
-    display.print(" Counter B: ");
-    display.println(counter_B);
-    display.print(" Counter D: ");
-    display.println(counter_D);
-    display.display();
-	  delay(10);
-    } 
-  stopWait();
-}
-*/
 void ISR_countA()  {
   counter_A++;  // increment Motor A counter value
 } 
