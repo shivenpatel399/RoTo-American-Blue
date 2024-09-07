@@ -135,11 +135,10 @@ void setup() {
   display.println(F("Code will run shortly..."));
   display.display();
   delay(2500);
-  northplus(CMtoSteps(50),110);
-  eastplus(CMtoSteps(50),110);
-  southplus(CMtoSteps(50),110);
-  westplus(CMtoSteps(50),110);
-  
+  PDnorth(CMtoSteps(50),110,3.13);
+  PDeast(CMtoSteps(50),110,3.13);
+  PDsouth(CMtoSteps(50),110,3.13);
+  PDwest(CMtoSteps(50),110,3.13);
 } 
 
 
@@ -216,8 +215,8 @@ void PDnorth(int thesteps, int power, float gained) {
     }
     currentAngle = float(ypr.yaw);
     thecorrection = target - currentAngle;
-    powerB = power - (gained * thecorrection);
-    powerD = power + (gained * thecorrection);
+    powerB = power + (gained * thecorrection);
+    powerD = power - (gained * thecorrection);
     M2_back(powerB);
     M4_advance(powerD);
     display.clearDisplay();
@@ -281,8 +280,8 @@ void PDsouth(int thesteps, int power, float gained) {
     }
     currentAngle = float(ypr.yaw);
     thecorrection = target - currentAngle;
-    powerB = power + (gained * thecorrection);
-    powerD = power - (gained * thecorrection);
+    powerB = power - (gained * thecorrection);
+    powerD = power + (gained * thecorrection);
     M2_advance(powerB);
     M4_back(powerD);
     display.clearDisplay();
