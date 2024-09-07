@@ -136,8 +136,11 @@ void setup() {
   display.display();
   delay(2500);
   PDnorth(CMtoSteps(50),110,3.13);
+  delay(5000);
   PDeast(CMtoSteps(50),110,3.13);
+  delay(5000);
   PDsouth(CMtoSteps(50),110,3.13);
+  delay(5000);
   PDwest(CMtoSteps(50),110,3.13);
 } 
 
@@ -852,3 +855,8 @@ void stopWait() {
   delay(500); ///<Delay 2S
 }
 
+
+/*
+Note: The Motor Orientation is where A is facing North, C is facing South, B is facing East, and D is facing West. 
+Remember that turning it left in perspective to A will increase the angle and turning it right towards A orientation will decrease the angle. 
+*/
