@@ -193,6 +193,135 @@ void targetAngle() {
     target = ypr.yaw;
   }
 }
+void PDnorth(int thesteps, int power, float gained) {
+  counter_B = 0;
+  counter_D = 0;
+  targetAngle();
+  lasttime = micros();
+  while ((thesteps * 2) > counter_B + counter_D) {
+    if (bno08x.wasReset()) {
+      setReports(reportType, reportIntervalUs);
+    }
+  
+    if (bno08x.getSensorEvent(&sensorValue)) {
+      // in this demo only one report type will be received depending on FAST_MODE define (above)
+      switch (sensorValue.sensorId) {
+        case SH2_ARVR_STABILIZED_RV:
+          quaternionToEulerRV(&sensorValue.un.arvrStabilizedRV, &ypr, true);
+        case SH2_GYRO_INTEGRATED_RV:
+          // faster (more noise?)
+          quaternionToEulerGI(&sensorValue.un.gyroIntegratedRV, &ypr, true);
+          break;
+      }
+    }
+    currentAngle = float(ypr.yaw);
+    thecorrection = target - currentAngle;
+    powerB = power - (gained * thecorrection);
+    powerD = power + (gained * thecorrection);
+    M2_back(powerB);
+    M4_advance(powerD);
+    display.clearDisplay();
+    display.setTextSize(1);
+    display.setTextColor(SSD1306_WHITE);
+    display.setCursor(0, 0);
+    display.print(" Expect: ");
+    display.println(target);
+    display.print(" Currnt: ");
+    display.println(currentAngle);
+    display.print(" PowerB: ");
+    display.println(powerB);
+    display.print(" PowerD: ");
+    display.println(powerD);
+    display.print(" Ang Diff: ");
+    display.println(abs(target-currentAngle));
+    display.display();
+	  delay(10);
+    } 
+  thistime = micros();
+  stopWait();
+  display.clearDisplay();
+  display.setTextSize(1);
+  display.setTextColor(SSD1306_WHITE);
+  display.setCursor(0, 0);
+  display.print(" Expect: ");
+  display.println(target);
+  display.print(" Currnt: ");
+  display.println(currentAngle);
+  display.print(" PowerB: ");
+  display.println(powerB);
+  display.print(" PowerD: ");
+  display.println(powerD);
+  display.print(" Ang Diff: ");
+  display.println(abs(target-currentAngle));
+  display.print(" Time: ");
+  display.println(abs(thistime-lasttime));
+  display.display();
+}
+
+void PDsouth(int thesteps, int power, float gained) {
+  counter_B = 0;
+  counter_D = 0;
+  targetAngle();
+  lasttime = micros();
+  while ((thesteps * 2) > counter_B + counter_D) {
+    if (bno08x.wasReset()) {
+      setReports(reportType, reportIntervalUs);
+    }
+  
+    if (bno08x.getSensorEvent(&sensorValue)) {
+      // in this demo only one report type will be received depending on FAST_MODE define (above)
+      switch (sensorValue.sensorId) {
+        case SH2_ARVR_STABILIZED_RV:
+          quaternionToEulerRV(&sensorValue.un.arvrStabilizedRV, &ypr, true);
+        case SH2_GYRO_INTEGRATED_RV:
+          // faster (more noise?)
+          quaternionToEulerGI(&sensorValue.un.gyroIntegratedRV, &ypr, true);
+          break;
+      }
+    }
+    currentAngle = float(ypr.yaw);
+    thecorrection = target - currentAngle;
+    powerB = power + (gained * thecorrection);
+    powerD = power - (gained * thecorrection);
+    M2_advance(powerB);
+    M4_back(powerD);
+    display.clearDisplay();
+    display.setTextSize(1);
+    display.setTextColor(SSD1306_WHITE);
+    display.setCursor(0, 0);
+    display.print(" Expect: ");
+    display.println(target);
+    display.print(" Currnt: ");
+    display.println(currentAngle);
+    display.print(" PowerB: ");
+    display.println(powerB);
+    display.print(" PowerD: ");
+    display.println(powerD);
+    display.print(" Ang Diff: ");
+    display.println(abs(target-currentAngle));
+    display.display();
+	  delay(10);
+    } 
+  thistime = micros();
+  stopWait();
+  display.clearDisplay();
+  display.setTextSize(1);
+  display.setTextColor(SSD1306_WHITE);
+  display.setCursor(0, 0);
+  display.print(" Expect: ");
+  display.println(target);
+  display.print(" Currnt: ");
+  display.println(currentAngle);
+  display.print(" PowerB: ");
+  display.println(powerB);
+  display.print(" PowerD: ");
+  display.println(powerD);
+  display.print(" Ang Diff: ");
+  display.println(abs(target-currentAngle));
+  display.print(" Time: ");
+  display.println(abs(thistime-lasttime));
+  display.display();
+}
 
 void PDeast(int thesteps, int power, float gained) {
   counter_A = 0;
