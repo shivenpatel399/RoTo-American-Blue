@@ -122,10 +122,7 @@ void setup() {
   if (!bno08x.begin_SPI(BNO08X_CS, BNO08X_INT)) {
     while (1) { delay(10); }
   }
-
-
   setReports(reportType, reportIntervalUs);
-
   delay(100);
   display.clearDisplay();
   display.setTextSize(1);
@@ -135,13 +132,7 @@ void setup() {
   display.println(F("Code will run shortly..."));
   display.display();
   delay(2500);
-  PDnorth(CMtoSteps(50),110,3.13);
-  delay(5000);
-  PDeast(CMtoSteps(50),110,3.13);
-  delay(5000);
-  PDsouth(CMtoSteps(50),110,3.13);
-  delay(5000);
-  PDwest(CMtoSteps(50),110,3.13);
+  the4method(135);
 } 
 
 
@@ -805,6 +796,34 @@ void westx(float steps, int speed) {
 
 }
 
+void the4method(int speed) {
+  counter_A = 0;
+  counter_B = 0;
+  counter_C = 0;
+  counter_D = 0;
+	M1_advance(speed);
+  M2_advance(speed);
+  M3_advance(speed);
+  M4_advance(speed);
+  delay(5000);
+  display.clearDisplay();
+  display.setTextSize(1);
+  display.setTextColor(SSD1306_WHITE);
+  display.setCursor(0, 0);
+  display.print(" Counter A: ");
+  display.println(counter_A);
+  display.print(" Counter B: ");
+  display.println(counter_B);
+  display.print(" Counter C: ");
+  display.println(counter_C);
+  display.print(" Counter D: ");
+  display.println(counter_D);
+  display.print(" Speed: ");
+  display.println(speed);
+  display.display();
+  stopWait();
+}
+
 void M1_advance(char Speed) { ///<Motor1 Advance 
   digitalWrite(M1,LOW);
   analogWrite(E1,Speed);
@@ -855,8 +874,3 @@ void stopWait() {
   delay(500); ///<Delay 2S
 }
 
-
-/*
-Note: The Motor Orientation is where A is facing North, C is facing South, B is facing East, and D is facing West. 
-Remember that turning it left in perspective to A will increase the angle and turning it right towards A orientation will decrease the angle. 
-*/
