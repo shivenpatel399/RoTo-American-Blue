@@ -30,6 +30,19 @@ bool checker = false;
 unsigned long lasttime;
 unsigned long thistime;
 
+int powerLeft = 0;
+int powerRight = 0;
+
+float derivative = 0;
+float integral = 0;
+float total_e = 0;
+float e = 0;
+float lastError = 0;
+
+float Kproportional = 0;
+float Kintegral = 0;
+float Kderivative = 0;
+
 #define BNO08X_CS 36
 #define BNO08X_INT 32
 
@@ -54,6 +67,7 @@ sh2_SensorValue_t sensorValue;
 
 
 float thecorrection = 0;
+float correction = 0;
 
 float powerA = 0;
 float powerB = 0;
@@ -61,7 +75,7 @@ float powerC = 0;
 float powerD = 0;
 
 float stepcount = 176.00;
-float circumference = 18.221;
+float circumference = 15.707;
 
 float integral = 0;
 float derivative = 0;
@@ -132,7 +146,7 @@ void setup() {
   display.println(F("Code will run shortly..."));
   display.display();
   delay(2500);
-  the4method(135);
+  thepairmethod(200,1);
 } 
 
 
@@ -796,28 +810,20 @@ void westx(float steps, int speed) {
 
 }
 
-void the4method(int speed) {
+void thepairmethod(int speed, int time) {
   counter_A = 0;
-  counter_B = 0;
   counter_C = 0;
-  counter_D = 0;
 	M1_advance(speed);
-  M2_advance(speed);
-  M3_advance(speed);
-  M4_advance(speed);
-  delay(5000);
+  M3_back(speed);
+  delay(time * 1000);
   display.clearDisplay();
   display.setTextSize(1);
   display.setTextColor(SSD1306_WHITE);
   display.setCursor(0, 0);
   display.print(" Counter A: ");
   display.println(counter_A);
-  display.print(" Counter B: ");
-  display.println(counter_B);
   display.print(" Counter C: ");
   display.println(counter_C);
-  display.print(" Counter D: ");
-  display.println(counter_D);
   display.print(" Speed: ");
   display.println(speed);
   display.display();
@@ -872,5 +878,62 @@ void stopWait() {
   M3_advance(0);
   M4_advance(0);
   delay(500); ///<Delay 2S
+}
+
+
+void PID(int steps, int power, float Kp, float Ki, float Kd) { // Input the amount of steps robot encoder should take and its original power.
+  counter_B = 0;
+  counter_D = 0;
+  targetAngle();
+  lasttime = micros();
+  while ((thesteps * 2) > counter_B + counter_D) {
+    if (bno08x.wasReset()) {
+      setReports(reportType, reportIntervalUs);
+    }
+  
+    if (bno08x.getSensorEvent(&sensorValue)) {
+      // in this demo only one report type will be received depending on FAST_MODE define (above)
+      switch (sensorValue.sensorId) {
+        case SH2_ARVR_STABILIZED_RV:
+          quaternionToEulerRV(&sensorValue.un.arvrStabilizedRV, &ypr, true);
+        case SH2_GYRO_INTEGRATED_RV:
+          // faster (more noise?)
+          quaternionToEulerGI(&sensorValue.un.gyroIntegratedRV, &ypr, true);
+          break;
+      }
+    }
+    currentAngle = float(ypr.yaw);
+    e = target - currentAngle;
+    display.clearDisplay();
+    display.setTextSize(1);
+    display.setTextColor(SSD1306_WHITE);
+    display.setCursor(0, 0);
+    display.print(" Error: ");
+    display.println(e);
+    if (e == 0) { // If the error is 0, we tell the robot to not worry about correction. Setting Error to 0 will set Integral and Derivative to 0 automatically.
+      integral = 0;
+    } else { // But the there is error, we compare and combine current error to the previous error
+      integral = integral + e;
+      total_e = total_e + 1;
+    }
+    derivative = e - lastError; // This determines the change in error over time to increase rate of change.
+    correction = ((Kp * e) + (Ki * integral) + (Kd * derivative)) * -1; // Combine the determination of error, comparison and combination of error, and change in error multiply by -1 to make each motor work inversely
+    powerB = power - correction; // Even if motor Left is taking positives, it will always work inversel regardless positive or negative to powerRight.
+    powerD = power + correction; // Refer back to powerLeft
+
+    
+
+    lastError = e; // Recall this is going in a loop, so we need to cycle lastError with the loop's current Error to make improvements.
+    display.print(" Last Error: ");
+    display.println(lastError);
+    display.print(" Counter A: ");
+    display.println(counter_A);
+    display.print(" Counter B: ");
+    display.println(counter_B);
+    display.print(" Errored: ");
+    display.print(total_e);
+    display.display();
+  stopWait();
+  }
 }
 
