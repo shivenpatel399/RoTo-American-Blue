@@ -1,6 +1,6 @@
-# American High School Robot Tour
+# American High School RoTo
 ----------------------
-All the resources used from the American High School Robot Tour Seasons (Codes, Logic, Files, Libraries, etc.)
+All the resources used from the American High School RoTo Seasons (Codes, Logic, Files, Libraries, etc.)
 
 **Written by Shiven Patel**
 
